@@ -12,12 +12,12 @@ function App() {
   // 바로바로 변경되야할경우 state에다가 
 
   // 반복문 230723
-  [1,2,3].map(function(a){
-    console.log(a)
-  })
+  // [1,2,3].map(function(a){
+  //   console.log(a)
+  // })
 
   //state는 등호로 변경하면안됨
-  let [like, likeUpdate] = useState([0,0,0]);
+  let [like, likeUpdate] = useState(0);
 
 
   //모달
@@ -27,6 +27,8 @@ function App() {
   
   let [title, setTit] = useState(1);
 
+  let [입력값,입력값변경] = useState('');
+  let [date, setDate] = useState('7월 21일');
   return (
     <div className="App">
       <div className="black-nav">
@@ -90,15 +92,23 @@ function App() {
           //실제 글 갯수만큼 
           글제목.map(function(a, i){
             return (
-              <div className="list" key={i}>
-                <h4 onClick ={ () => { setModal(!modal); setTit(i)}}> { 글제목[i] }</h4>
-                <span onClick={ () => {
-                    let copy =[...like];
-                    copy[i] = copy[i] + 1;
-                    likeUpdate(copy)  
-                   }}> 🧡 </span>{ like[i] }
-                <p>7월 21일</p>
+              <div className="list" key={i}> 
+                <h4 onClick ={ () => { setModal(!modal); setTit(i)}}> { 글제목[i] }
+                {/* 상위요소 막을때 */}
+                <span onClick={ (e) => {e.stopPropagation(); likeUpdate(like+1)}}> 🧡 </span> { like }&nbsp;&nbsp;&nbsp;
+                <button onClick={ 
+                  (e) =>{
+                    e.stopPropagation();
+                    let copy =[...글제목];
+                    copy.splice(i,1);
+                    글제목변경(copy);
+                   
+                }}>삭제</button></h4>
+               
+                <p>{date}</p>
+               
               </div>
+              
              
 
             )
@@ -106,7 +116,24 @@ function App() {
 
         }
 
-        
+        <input value={입력값} onChange={(e)=>{
+            입력값변경(e.target.value);
+            console.log(입력값);
+        }}/>
+        <button onClick={()=>{
+            // 글제목변경(글제목.concat(입력값));
+          if(입력값!=''){
+            let copy =[...글제목];
+            copy.unshift(입력값);
+            글제목변경(copy);
+
+            let copyDate =[...date];
+
+            입력값변경('');
+          }
+        }}>등록</button>
+
+
         {/* 
         <button onClick={()=>{setTit(0)}}>글제목0</button>
         <button onClick={()=>{setTit(1)}}>글제목1</button>
