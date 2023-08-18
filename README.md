@@ -65,8 +65,8 @@
 <h3>ajax 사용 옵션</h3>
 <p>
 
-    1. XMLHttpRequest <br>
-    2. fecth() <br>
-    3. axios ( npm install axios ) <br>
+    1. XMLHttpRequest 
+    2. fecth() 
+    3. axios ( npm install axios ) 
 </p>
 
