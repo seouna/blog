@@ -30,6 +30,7 @@
  
 </p>
 <h3>컴포넌트</h3>
+
 <p></p>
 <h3>동적 UI 만들기 STEP</h3>
 <p></p>
@@ -59,5 +60,13 @@
 근데 github은 우리가 서버를 만지고 어찌할 수 있는게 아니고 그냥 HTML 파일 올린것만 보여주는 곳이기 때문에
 사이트 메뉴에다가 페이지 이동버튼을 잘 만들어두시면 되겠습니다.
 아니면 URL에 #기호가 붙는 hashRouter를 리액트 라우터 코드 사용
+</p>
+
+<h3>ajax 사용 옵션</h3>
+<p>
+
+    1. XMLHttpRequest <br>
+    2. fecth() <br>
+    3. axios ( npm install axios ) <br>
 </p>
 
